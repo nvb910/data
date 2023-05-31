@@ -1,0 +1,100 @@
+$a + b$
+$a - b$
+$a \times b$
+$a \div b$
+$a^2$
+$\sqrt{a}$
+$\frac{a}{b}$
+$\int_{a}^{b} f(x) , dx$
+$\sum_{i=1}^{n} a_i$
+$\prod_{i=1}^{n} a_i$
+$\lim_{x \to \infty} f(x)$
+$a \neq b$
+$a \leq b$
+$a \geq b$
+$\sin(x)$
+$\cos(x)$
+$\tan(x)$
+$\log(x)$
+$\ln(x)$
+$e^x$
+$a \cdot b$
+$\frac{\partial f}{\partial x}$
+$\binom{n}{k}$
+$P(A \cap B)$
+$P(A \cup B)$
+$\frac{d}{dx} f(x)$
+$f'(x)$
+$\frac{df}{dx}$
+$\lim_{h \to 0} \frac{f(x+h)-f(x)}{h}$
+$\int f(x) , dx$
+$\oint f(x) , dx$
+$\sum_{i=1}^{\infty} a_i$
+$\prod_{i=1}^{\infty} a_i$
+$\lim_{n \to \infty} a_n$
+$f(x) = ax^2 + bx + c$
+$\frac{-b \pm \sqrt{b^2-4ac}}{2a}$
+$\frac{d^2f}{dx^2}$
+$\iint f(x,y) , dx , dy$
+$\iiint f(x,y,z) , dx , dy , dz$
+$\vec{v} \cdot \vec{u}$
+$\vec{v} \times \vec{u}$
+$a \bmod b$
+$\binom{n}{k} = \binom{n-1}{k} + \binom{n-1}{k-1}$
+$\lim_{x \to a^+} f(x)$
+$\lim_{x \to a^-} f(x)$
+$f(x) = \begin{cases} a, & \text{if } x < b \ c, & \text{if } x \geq b \end{cases}$
+$\begin{bmatrix} a & b \ c & d \end{bmatrix}$
+$\begin{pmatrix} a & b \ c & d \end{pmatrix}$
+$\begin{vmatrix} a & b \ c & d \end{pmatrix}$
+$\binom{n}{k} = \binom{n-1}{k} + \binom{n-1}{k-1}$
+$f(x) = \begin{cases} a, & \text{if } x < b \ c, & \text{if } x \geq b \end{cases}$
+$\begin{bmatrix} a & b \ c & d \end{bmatrix}$
+$\begin{pmatrix} a & b \ c & d \end{pmatrix}$
+$\begin{vmatrix} a & b & c \ d & e & f \ g & h & i \end{vmatrix}$
+$\vec{F} = m \vec{a}$
+$E = mc^2$
+$\mathbb{N}$
+$\mathbb{Z}$
+$\mathbb{Q}$
+$\mathbb{R}$
+$\mathbb{C}$
+$\mathcal{L}$
+$f(x) = \sin(x) + \cos(x)$
+$\int_{-\infty}^{\infty} e^{-x^2} , dx$
+$\sum_{n=1}^{\infty} \frac{1}{n^2}$
+$\lim_{n \to \infty} \left(1 + \frac{1}{n}\right)^n$
+$\int_{0}^{\pi} \sin(x) , dx$
+$\lim_{x \to 0} \frac{\sin(x)}{x}$
+$F = G \frac{m_1 m_2}{r^2}$
+$\mathbf{A} \cdot \mathbf{B} = \mathbf{B} \cdot \mathbf{A}$
+$\mathbf{A} \times (\mathbf{B} + \mathbf{C}) = \mathbf{A} \times \mathbf{B} + \mathbf{A} \times \mathbf{C}$
+$\sin^2(x) + \cos^2(x) = 1$
+$e^{i \pi} + 1 = 0$
+$f(x) = \int_{a}^{x} F(t) , dt$
+$\log_b(x) = \frac{\log(x)}{\log(b)}$
+$P(A|B) = \frac{P(A \cap B)}{P(B)}$
+$\frac{d}{dx} \left(e^{kx}\right) = ke^{kx}$
+$a \equiv b \pmod{m}$
+$\frac{\partial^2 f}{\partial x^2} + \frac{\partial^2 f}{\partial y^2} = 0$
+$\binom{n}{k} = \frac{n!}{k!(n-k)!}$
+$\sin(x + y) = \sin(x)\cos(y) + \cos(x)\sin(y)$
+$f(x) = \ln(x)$
+$e = \lim_{n \to \infty} \left(1 + \frac{1}{n}\right)^n$
+$\int e^x , dx = e^x + C$
+$\sum_{k=0}^{n} {n \choose k} = 2^n$
+$\lim_{x \to \infty} \frac{\log(x)}{x} = 0$
+$a \cup b = b \cup a$
+$a \cap b = b \cap a$
+$\frac{d}{dx} \left(\sin(x)\right) = \cos(x)$
+$\frac{d}{dx} \left(\cos(x)\right) = -\sin(x)$
+$e^{i \theta} = \cos(\theta) + i\sin(\theta)$
+$\lim_{x \to 0} \frac{\sin(x)}{x} = 1$
+$f(x) = \int_{0}^{x} F(t) , dt$
+$\log_b(xy) = \log_b(x) + \log_b(y)$
+$P(A \cap B) = P(A)P(B|A)$
+$\int \frac{1}{x} , dx = \ln|x| + C$
+$\lim_{n \to \infty} \left(1 + \frac{1}{n}\right)^n = e$
+$\frac{d}{dx} \left(e^{cx}\right) = ce^{cx}$
+$a \equiv b \mod m$
+$\frac{\partial^2 f}{\partial x^2} - \frac{\partial^2 f}{\partial y^2} = 0$
