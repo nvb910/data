@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+
+<html>
+
+
+
+<head>
+
+  <title>Vẽ và lưu hình</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <style>
+
+    #canvas {
+
+      border: 1px solid #ccc;
+
+      background-color: #fff;
+
+      cursor: crosshair;
+
+    }
+
+  </style>
+
+</head>
+
+
+
+<body>
+
+  <div class="container">
+
+    <h2 class="jumbotron p-3 bg-primary text-light">Tạo Dataset Công thức toán viết tay</h2>
+
+    <div>
+
+      <h4>Công thức toán học:</h4>
+
+      <div class="p-3 bg-light" id="mathDisplay" style="font-size: 20px;"></div>
+
+      <div class="mt-3 mb-3">
+
+        <button id="nextBtn" class="btn btn-primary">Tiếp tục</button>
+
+      </div>
+
+    </div>
+
+
+
+    <div></div>
+
+    <div>
+
+      <h4>Vẽ lại và lưu công thức:</h4>
+
+      <canvas id="canvas" width="350" height="200" style="border-radius: 10px;"></canvas>
+
+      <div>
+
+        <button id="saveBtn" class="btn btn-primary">Lưu hình</button>
+
+      </div>
+
+    </div>
+
+
+
+  </div>
+
+
+
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+  <script>
+
+
+
+    $(document).ready(function () {
+
+
+
+      var canvas = document.getElementById('canvas');
+
+
+
+      var context = canvas.getContext('2d');
+
+
+
+      var isDrawing = false;
+
+
+
+
+
+
+
+      // Bắt đầu vẽ khi người dùng chạm vào màn hình
+
+
+
+      canvas.addEventListener('touchstart', function (e) {
+
+
+
+        var touchX = e.touches[0].pageX - this.offsetLeft;
+
+
+
+        var touchY = e.touches[0].pageY - this.offsetTop;
+
+
+
+        isDrawing = true;
+
+
+
+        context.beginPath();
+
+
+
+        context.moveTo(touchX, touchY);
+
+
+
+      });
+
+
+
+
+
+
+
+      // Vẽ khi người dùng di chuyển tay trên màn hình
+
+
+
+      canvas.addEventListener('touchmove', function (e) {
+
+
+
+        if (isDrawing) {
+
+
+
+          var touchX = e.touches[0].pageX - this.offsetLeft;
+
+
+
+          var touchY = e.touches[0].pageY - this.offsetTop;
+
+
+
+          context.lineTo(touchX, touchY);
+
+
+
+          context.stroke();
+
+
+
+        }
+
+
+
+      });
+
+
+
+
+
+
+
+      // Ngừng vẽ khi người dùng rời tay khỏi màn hình
+
+
+
+      canvas.addEventListener('touchend', function () {
+
+
+
+        isDrawing = false;
+
+
+
+      });
+
+
+
+
+
+
+
+      // Lưu hình dưới dạng .png khi người dùng nhấn nút "Lưu hình"
+
+
+
+      $('#saveBtn').click(function () {
+
+
+
+        var image = canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream');
+
+
+
+        var link = document.createElement('a');
+
+
+
+        link.download = 've.png';
+
+
+
+        link.href = image;
+
+
+
+        link.click();
+
+
+
+      });
+
+
+
+
+
+
+
+      // Đọc file labels.txt và hiển thị công thức toán học đầu tiên
+
+
+
+      var labels = [];
+
+
+
+      var currentIndex = 0;
+
+
+
+
+
+
+
+      $.get('labels.txt', function (data) {
+
+
+
+        labels = data.split('\n').filter(function (label) {
+
+
+
+          return label.trim().length > 0;
+
+
+
+        });
+
+
+
+
+
+
+
+        if (labels.length > 0) {
+
+
+
+          displayMathLabel(labels[currentIndex]);
+
+
+
+        }
+
+
+
+      });
+
+
+
+
+
+
+
+      // Hiển thị công thức toán học
+
+
+
+      function displayMathLabel(label) {
+
+
+
+        var mathDisplay = document.getElementById('mathDisplay');
+
+
+
+        mathDisplay.innerHTML = label;
+
+
+
+        convertLatexToMathML(label);
+
+
+
+      }
+
+
+
+
+
+
+
+      // Chuyển đổi mã LaTeX thành MathML
+
+
+
+      function convertLatexToMathML(latex) {
+
+
+
+        var apiUrl = 'https://www.wiris.net/demo/editor/latex2mathml?latex=' + encodeURIComponent(latex);
+
+
+
+
+
+
+
+        $.get(apiUrl, function (data) {
+
+
+
+          var mathml = data;
+
+
+
+          var mathDisplay = document.getElementById('mathDisplay');
+
+
+
+          mathDisplay.innerHTML = mathml;
+
+
+
+          MathJax.typesetPromise([mathDisplay]).catch(function (err) {
+
+
+
+            console.log(err.message);
+
+
+
+          });
+
+
+
+        }).fail(function () {
+
+
+
+          console.log('Lỗi khi chuyển đổi LaTeX thành MathML.');
+
+
+
+        });
+
+
+
+      }
+
+
+
+
+
+
+
+      // Chuyển sang công thức toán học tiếp theo khi người dùng nhấn nút "Next"
+
+
+
+      $('#nextBtn').click(function () {
+
+
+
+        if (currentIndex < labels.length - 1) {
+
+
+
+          currentIndex++;
+
+
+
+          displayMathLabel(labels[currentIndex]);
+
+
+
+        }
+
+
+
+      });
+
+
+
+    });
+
+
+
+  </script>
+
+</body>
+
+
+
+</html>
